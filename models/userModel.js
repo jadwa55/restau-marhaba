@@ -2,30 +2,61 @@
 /*                               User Model                              */
 /* -------------------------------------------------------------------------- */
 
-module.exports = (db , type) => {
-    // Define Table
-    return db.define('users',{ // Table name
-        // Attributes , Type
-        id: {
-            type: type.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            allowNull: false
-        },
-        username: {
-            type: type.STRING
-        },
-        email: {
-            type: type.STRING
-        },
-        password: {
-            type: type.STRING
-        },
-        tele: {
-            type: type.NUMBER
-        },
-        role: {
-            type: type.BOOLEAN
-        }
-    })
-}
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/db')
+
+class User extends Model {}
+
+User.init({
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+
+    },
+
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+
+    },
+
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+
+    },
+
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    passwordConfirm: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    telephone: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    role: {
+        type: DataTypes.ENUM,
+        values: ['livreur', 'client'],
+        defaultValue: 'client',
+    },
+},
+{
+    sequelize: sequelize,
+    modelName: 'User'
+})
+
+
+module.exports = User
