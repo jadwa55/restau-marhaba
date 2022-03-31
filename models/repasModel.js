@@ -2,7 +2,7 @@
 /*                               Repas Model                              */
 /* -------------------------------------------------------------------------- */
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/db')
+const sequelize = require('../config/db.config')
 
 
 class Repas extends Model{}

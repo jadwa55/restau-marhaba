@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors"); //cors provides Express middleware to enable CORS
 const app = express();
+const dotenv = require('dotenv').config();
 var corsOptions = {
   origin: "http://localhost:8080"
 };

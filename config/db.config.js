@@ -1,9 +1,18 @@
-module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "123456",
-    DB: "restodb",
-    dialect: "mysql",
+const { Sequelize } = require("sequelize")
+
+const sequelize = new Sequelize(
+    'restodb',
+    'root',
+    null,
+    {host: 'localhost', dialect: 'mysql'}
+)
+
+// module.exports = {
+//     HOST: "localhost",
+//     USER: "root",
+//     PASSWORD: "123456",
+//     DB: "restodb",
+//     dialect: "mysql",
 
 
     // pool: {
@@ -12,4 +21,6 @@ module.exports = {
     //   acquire: 30000,
     //   idle: 10000
     // }
-  };
+//   };
+
+  module.exports = sequelize
