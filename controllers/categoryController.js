@@ -1,7 +1,7 @@
-const Categorie = require('../models/repasCategory')
+const Category = require('../models/repasCategory')
 
 exports.addCategory = async (req,res)=>{
-    const {type} = req.body.type
+    const {type} = req.body
 
     if(!type){
         res.status(400).json({
@@ -9,12 +9,14 @@ exports.addCategory = async (req,res)=>{
         })
     }
 
-    res.status(200).json({
-        message: 'category added successfully',
-        categorie: categorie
-    })
-
-    const categorie = await Category.create({
+    const category = await Category.create({
         type: type
     })
+
+    res.status(200).json({
+        message: 'category added successfully',
+        category: category
+    })
+
+
 }
