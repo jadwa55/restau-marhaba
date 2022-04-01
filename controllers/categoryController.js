@@ -44,3 +44,19 @@ exports.updateCategory = async (req,res)=>{
         res.send(error)
     }
 }
+
+exports.deleteCategory = async (req,res)=>{
+
+    try {
+        const id = req.params.id
+
+        const category = await Category.destroy({where: {id: id}})
+
+        res.status(200).json({
+            message : 'category deleted successfully',
+        })
+        
+    } catch (error) {
+        res.send(error)
+    }
+}

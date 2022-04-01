@@ -11,4 +11,8 @@ router
     .route('/update/:id')
     .post(CategoryController.updateCategory)
 
+router
+    .route('/delete/:id')
+    .post(CategoryController.deleteCategory)
+
 module.exports = router;
