@@ -47,11 +47,11 @@ User.init({
         allowNull: false
     },
 
-    // role: {
-    //     type: DataTypes.ENUM,
-    //     values: ['livreur', 'client'],
-    //     defaultValue: 'client',
-    // },
+    role: {
+        type: DataTypes.ENUM,
+        values: ['livreur', 'client'],
+        defaultValue: 'client',
+    },
 },
 {
     sequelize: sequelize,

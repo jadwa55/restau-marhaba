@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-const db = require("./app/models");
+const db = require("./models");
 const Role = db.role;
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Db');
@@ -27,7 +27,7 @@ function initial() {
  
   Role.create({
     id: 2,
-    name: "moderator"
+    name: "livreur"
   });
  
   Role.create({
@@ -40,6 +40,9 @@ function initial() {
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to RESTOURANT MARHABA." });
   });
+
+  require('./routes/authRoute')(app);
+  require('./routes/userRoute')(app);
   // set port, listen for requests
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {

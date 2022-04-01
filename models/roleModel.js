@@ -2,20 +2,20 @@
 /*                               Role Model                              */
 /* -------------------------------------------------------------------------- */
 
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/db.config')
+// const { Sequelize, DataTypes, Model } = require('sequelize');
+// const sequelize = require('../config/db.config')
 
-class Role extends Model {}
+// class Role extends Model {}
 
-Role.init({
+// Role.init({
     
-        id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true
-        },
-        name: {
-          type: Sequelize.STRING
-        }
-})
+//         id: {
+//           type: Sequelize.INTEGER,
+//           primaryKey: true
+//         },
+//         name: {
+//           type: Sequelize.STRING
+//         }
+// })
 
-module.exports = Role;
+// module.exports = Role;
