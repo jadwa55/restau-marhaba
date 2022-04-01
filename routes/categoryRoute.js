@@ -7,6 +7,8 @@ router
     .route('/create')
     .post(CategoryController.addCategory)
 
-
+router
+    .route('/update/:id')
+    .post(CategoryController.update)
 
 module.exports = router;
