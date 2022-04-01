@@ -60,3 +60,22 @@ exports.deleteCategory = async (req,res)=>{
         res.send(error)
     }
 }
+
+exports.getAllCategory = async (req,res)=>{
+    try {
+        const category = await Category.findAll()
+
+        if(!category){
+            res.status(204).json({
+                message: 'no category found'
+            })
+        }
+
+        res.status(200).json({
+            message: 'success',
+            category: category
+        })
+    } catch (error) {
+        res.send(error)
+    }
+}

@@ -13,6 +13,6 @@ router
 
 router
     .route('/delete/:id')
-    .post(CategoryController.deleteCategory)
+    .delete(CategoryController.deleteCategory)
 
 module.exports = router;
