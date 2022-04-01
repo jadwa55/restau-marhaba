@@ -9,6 +9,6 @@ router
 
 router
     .route('/update/:id')
-    .post(CategoryController.update)
+    .post(CategoryController.updateCategory)
 
 module.exports = router;
