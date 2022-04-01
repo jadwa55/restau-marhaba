@@ -20,3 +20,27 @@ exports.addCategory = async (req,res)=>{
 
 
 }
+
+exports.updateCategory = async (req,res)=>{
+
+    try {
+        const id = req.params.id
+
+        const type = req.body.type
+
+        if(!type){
+            res.status(400).json({
+                message: 'please insert a category type',
+            })
+        }
+
+        const category = await Category.update({type: type}, {where: {id: id}})
+
+        res.status(200).json({
+            message: 'category updated successfully',
+            category: category
+        })
+    } catch (error) {
+        res.send(error)
+    }
+}
