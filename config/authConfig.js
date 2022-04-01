@@ -1,3 +1,3 @@
-module.exports = {
-    secret: "jadwa-secret-key"
-  };
+// module.exports = {
+//     secret: "jadwa-secret-key"
+//   };
