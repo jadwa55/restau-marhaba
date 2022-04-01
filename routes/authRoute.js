@@ -4,7 +4,7 @@ const {signUp,signIn} = require('../authentification/authentification')
 
 
 
-Router.route("/signup")
+Router.route('/signup')
         .post(signUp)
 
 

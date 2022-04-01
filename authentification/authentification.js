@@ -19,7 +19,10 @@ exports.signUp = async (req, res)=>{
             telephone: req.body.telephone
         })
         
-        console.log('done');
+        // console.log('done');
+        // console.log(process.env.SECRET_KEY);
+        // console.log(process.env.EXPIRE_IN);
+
         const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: process.env.EXPIRE_IN})
         
         console.log(token)    
@@ -32,6 +35,7 @@ exports.signUp = async (req, res)=>{
     } catch (error) {
 
         res.send(error)
+        console.log(error)
         
     }
 
