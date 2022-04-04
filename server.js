@@ -25,13 +25,14 @@ app.get("/", (req, res) => {
 const authRouter = require('./routes/authRoute')
 const categoryRouter = require('./routes/categoryRoute')
 const repasRouter = require('./routes/repasRoute')
+const orderRouter = require('./routes/orderRoute')
 
 
 //* Register Our Routes
 app.use("/api", authRouter)
 app.use("/api/category", categoryRouter)
 app.use("/api/repas", repasRouter)
-
+app.use("/api/order", orderRouter)
 
 // set port, listen for requests
   const PORT = process.env.PORT || 8080;
