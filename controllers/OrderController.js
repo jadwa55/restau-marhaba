@@ -9,13 +9,13 @@ exports.addOrder= async (req,res)=>{
         })
     }
 
-    const Order= await Category.create({
+    const order= await Order.create({
         type: type
     })
 
     res.status(200).json({
         message: 'Orderadded successfully',
-        category: category
+        order: order
     })
 
 
