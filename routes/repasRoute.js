@@ -15,4 +15,8 @@ router
     .route('/delete/:id')
     .delete(repasController.deleteRepas)
 
+router
+    .route('/repas')
+    .get(repasController.getAllRepas)
+
 module.exports = router;
