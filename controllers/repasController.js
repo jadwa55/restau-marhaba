@@ -35,3 +35,20 @@ exports.addRepas = async (req,res)=>{
     }
 
 }
+
+exports.updateRepas = async (req,res)=>{
+    try {
+        const id = req.params.id
+        const data = req.body
+
+        const repas = await Repas.update(data,{where: {id: id}})
+
+        res.status(200).json({
+            message: 'repas updated successfully',
+            repas: repas
+        })
+    } catch (error) {
+        res.send(error)
+        
+    }
+}
