@@ -52,3 +52,18 @@ exports.updateRepas = async (req,res)=>{
         
     }
 }
+
+exports.deleteRepas = async (req,res)=>{
+    try {
+        const id = req.params.id
+
+        const repas = await Repas.destroy({where: {id: id}})
+
+        res.status(200).json({
+            message: 'repas deleted successfully'
+        })
+    } catch (error) {
+        res.send(error)
+        
+    }
+}
