@@ -5,4 +5,8 @@ const RepasCategory = require('../controllers/repasController')
 
 router
     .route('/create')
-    .post(CategoryController.addRepas)
+    .post(repasController.addRepas)
+
+router
+    .route('/update/:id')
+    .post(repasController.updateRepas)
