@@ -67,3 +67,26 @@ exports.deleteRepas = async (req,res)=>{
         
     }
 }
+
+
+exports.getAllRepas = async (req,res)=>{
+    try {
+        const repas = await Repas.findAll()
+
+        if(!repas){
+            res.status(204).json({
+                message: 'no repas found'
+            })
+        }
+
+        res.status(200).json({
+            message: 'success',
+            repas: repas
+        })
+
+        
+    } catch (error) {
+        res.send(error)
+        
+    }
+}
