@@ -7,7 +7,9 @@ router
     .route('/update/:id')
     .post(userController.updateUser)
 
-
+router
+    .route('/delete/:id')
+    .delete(userController.deleteUser)
 
 
 
