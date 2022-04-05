@@ -1,3 +1,41 @@
+const User = require("../models/userModel")
+
+exports.updateUser = async (req,res)=>{
+    try {
+        const id = req.params.id
+        const data = req.body
+
+        const user = await User.update(data,{where: {id: id}})
+
+        res.status(200).json({
+            message: 'user updated successfully',
+            user: user
+        })
+    } catch (error) {
+        res.send(error)
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // exports.allAccess = (req, res) => {
 //     res.status(200).send("Public Content.");
 //   };
@@ -10,3 +48,4 @@
 //   exports.moderatorBoard = (req, res) => {
 //     res.status(200).send("Moderator Content.");
 //   };
+
