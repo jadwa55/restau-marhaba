@@ -37,3 +37,18 @@ exports.updateOrder = async (req,res)=>{
         
     }
 }
+
+exports.deleteOrder = async (req,res)=>{
+    try {
+        const id = req.params.id
+
+        const order = await Order.destroy({where: {id: id}})
+
+        res.status(200).json({
+            message: 'order deleted successfully'
+        })
+    } catch (error) {
+        res.send(error)
+        
+    }
+}
