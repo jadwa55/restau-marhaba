@@ -52,3 +52,25 @@ exports.deleteOrder = async (req,res)=>{
         
     }
 }
+
+exports.getAllOrder = async (req,res)=>{
+    try {
+        const order = await Order.findAll()
+
+        if(!order){
+            res.status(204).json({
+                message: 'no order found'
+            })
+        }
+
+        res.status(200).json({
+            message: 'success',
+            order: order
+        })
+
+        
+    } catch (error) {
+        res.send(error)
+        
+    }
+}

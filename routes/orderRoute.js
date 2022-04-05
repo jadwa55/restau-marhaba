@@ -11,7 +11,7 @@ router
     .route('/update/:id')
     .post(orderController.updateOrder)
 
-route
+router
     .route('/delete/:id')
     .delete(orderController.deleteOrder)
 
