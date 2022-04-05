@@ -21,3 +21,19 @@ exports.addOrder= async (req,res)=>{
     })
 }
 
+exports.updateOrder = async (req,res)=>{
+    try {
+        const id = req.params.id
+        const data = req.body
+
+        const order = await Order.update(data,{where: {id: id}})
+
+        res.status(200).json({
+            message: 'order updated successfully',
+            order: order
+        })
+    } catch (error) {
+        res.send(error)
+        
+    }
+}

@@ -6,3 +6,5 @@ const orderController = require('../controllers/OrderController')
 router
     .route('/create')
     .post(orderController.addOrder)
+
+module.exports = router;
