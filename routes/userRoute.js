@@ -1,3 +1,28 @@
+const User = require('../models/userModel')
+const express = require('express')
+const router = express.Router()
+const userController = require('../controllers/userController')
+
+router
+    .route('/update/:id')
+    .post(userController.updateUser)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const { authJwt } = require("../middleware");
 // const controller = require("../controllers/userController");
 // module.exports = function(app) {
