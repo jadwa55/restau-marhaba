@@ -11,4 +11,8 @@ router
     .route('/update/:id')
     .post(orderController.updateOrder)
 
+route
+    .route('/delete/:id')
+    .delete(orderController.deleteOrder)
+
 module.exports = router;
