@@ -7,4 +7,8 @@ router
     .route('/create')
     .post(orderController.addOrder)
 
+router
+    .route('/update/:id')
+    .post(orderController.updateOrder)
+
 module.exports = router;
