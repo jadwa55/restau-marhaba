@@ -26,16 +26,23 @@ exports.addOrder= async (req,res)=>{
     }
 }
 
-exports.updateOrder = async (req,res)=>{
-    try {
-        const id = req.params.id
-        const data = req.body
+exports.updateOrderStatus = async (req,res)=>{
+    const id = req.params.id
+    const {status} = req.body
 
-        const order = await Order.update(data,{where: {id: id}})
+    try {
+        if(!status || !id){
+            res.status(400).json({
+                message: 'please insert a status'
+            })
+        }
+
+
+        const updateStatus = await Order.update({status: status}, {where: {id: id}})
 
         res.status(200).json({
-            message: 'order updated successfully',
-            order: order
+            message: 'status updated successfully',
+            updateStatus
         })
     } catch (error) {
         res.send(error)
