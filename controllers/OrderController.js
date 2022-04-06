@@ -1,24 +1,29 @@
-const Order = require("../models/orderModel")
+// const Order = require("../models/orderModel")
+const {Order,Repas,RepasOrder} = require('../config/migration')
 
 exports.addOrder= async (req,res)=>{
-    const {type} = req.body
-
-    if(!type){
-        res.status(400).json({
-            message: 'please choose a repa',
+    try {
+        const token = req.headers.authorization.split(' ')[1]
+        const payload = decodeToken(token)
+        const {repas, address, quantity} = req.body        
+        const order =  await Order.create({address : address, UserId: payload.id })
+        const Norder = await Order.findOne({where: {UserId: payload.id}})
+        const repa = await Repas.findOne({where: {name: repas}})
+        console.log(repa);
+        console.log(Norder.id)
+        const repasOrder  = await RepasOrder.create({
+            quantity: quantity,
+            RepaId: repa.id,
+            OrderId: Norder.id
         })
-    }
-
-    const order= await Order.create({
-        type: type,
-        status: status,
-        address: address
-    })
-
-    res.status(200).json({
-        message: 'Orderadded successfully',
+        res.status(200).json({
+        message: 'order submited successfully',
         order: order
-    })
+        })
+    } catch (error) {
+        res.send(error)
+        console.log(error);
+    }
 }
 
 exports.updateOrder = async (req,res)=>{
