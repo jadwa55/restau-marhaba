@@ -30,14 +30,14 @@ exports.createFacture = async (req,res)=>{
             service: 'outlook',
             debug: true, 
             auth: {
-            user: `nOOne0001@outlook.fr`, 
-            pass: `noone@@..`, 
+            user: `daioufsali@outlook.fr`, 
+            pass: `Sali55@@`, 
             },
         });
     
         let info = await transporter.sendMail({
-            from: '"nOOne 👻" nOOne0001@outlook.fr', 
-            to: "esraidi12@gmail.com", 
+            from: '"salma 👻" daioufsali@outlook.fr', 
+            to: "daioufsali@gmail.com", 
             subject: "facture de l'ordre",
             text: "test", 
             html: "<b>Facture de l'order</b>", 
