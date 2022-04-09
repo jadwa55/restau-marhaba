@@ -26,7 +26,7 @@ const authRouter = require('./routes/authRoute')
 const categoryRouter = require('./routes/categoryRoute')
 const repasRouter = require('./routes/repasRoute')
 const orderRouter = require('./routes/orderRoute')
-const factureRouter = reuire('./routes/factureRoue')
+const factureRouter = require('./routes/factureRoute')
 
 
 //* Register Our Routes

@@ -9,7 +9,7 @@ exports.signUp = async (req, res)=>{
     
     try {
         
-
+        console.log(req.body.firstName);
         const user = await User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,

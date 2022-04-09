@@ -1,15 +1,14 @@
 const {Order,Repas,Facture,RepasOrder} = require('../config/migration')
-const {logger} = require('../utils/logger/logger')
 const nodemailer = require("nodemailer");
 
 
 exports.createFacture = async (req,res)=>{
     const orderId = req.params.id
     const totalPrice = req.body.totalPrice
-    const order = await Order.findOne({raw: true},{where:{id: orderId}})
-    const repasOrder = await RepasOrder.findAll({raw: true},{where: {OrderId: orderId}})
-    console.log(repasOrder)
-    const repas = await Repas.findAll({raw: true}, {where: {id: repasOrder.RepaId}})
+    // const order = await Order.findOne({raw: true},{where:{id: orderId}})
+    // const repasOrder = await RepasOrder.findAll({raw: true},{where: {OrderId: orderId}})
+    // console.log(repasOrder)
+    // const repas = await Repas.findAll({raw: true}, {where: {id: repasOrder.RepaId}})
 
     try {
         const facture = await Facture.create({
@@ -40,17 +39,16 @@ exports.createFacture = async (req,res)=>{
             to: "daioufsali@gmail.com", 
             subject: "facture de l'ordre",
             text: "test", 
-            html: "<b>Facture de l'order</b>", 
+            html: `<b>Facture de l'order</b>
+                    ${totalPrice} ${orderId}`, 
         });
     
     
-        logger.log('info', 'facture created successfully and the email is sent')
         res.status(200).json({
             message: 'facture created successfully'
         })
         
     } catch (error) {
-        logger.log('error', error)
         res.send(error)
         
     }

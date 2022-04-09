@@ -1,29 +1,36 @@
 // const Order = require("../models/orderModel")
 const {Order,Repas,RepasOrder} = require('../config/migration')
+const jwt = require('jsonwebtoken')
 
-exports.addOrder= async (req,res)=>{
+
+
+
+const decodeToken = (token)=>{
+    return jwt.verify(token, process.env.SECRET_KEY)
+}
+
+exports.submitOrder = async (req,res)=>{
     try {
-        const token = req.headers.authorization.split(' ')[1]
-        const payload = decodeToken(token)
-        const {repas, address, quantity} = req.body        
-        const order =  await Order.create({address : address, UserId: payload.id })
-        const Norder = await Order.findOne({where: {UserId: payload.id}})
-        const repa = await Repas.findOne({where: {name: repas}})
-        console.log(repa);
-        console.log(Norder.id)
-        const repasOrder  = await RepasOrder.create({
-            quantity: quantity,
-            RepaId: repa.id,
-            OrderId: Norder.id
-        })
+        // const token = req.headers.authorization.split(' ')[1]
+        // const payload = decodeToken(token)
+        const {status, address, clientIdId} = req.body        
+        const order =  await Order.create({address : address, clientIdId: clientIdId, status: status })
+        console.log(order);
+        // const Norder = await Order.findOne({where: {UserId: payload.id}})
+        // const repa = await Repas.findOne({where: {name: repas}})
+        // const repasOrder  = await RepasOrder.create({
+        //     quantity: quantity,
+        //     RepaId: repa.id,
+        //     OrderId: Norder.id
+        // })
         res.status(200).json({
-        message: 'order submited successfully',
-        order: order
+            message: 'order submited successfully',
+            order: order
         })
     } catch (error) {
         res.send(error)
-        console.log(error);
     }
+
 }
 
 exports.updateOrderStatus = async (req,res)=>{
